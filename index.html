@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encriptador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo"></div>
+      </header>
+
+      <main>
+        <div class="text-box">
+          <textarea
+            id="input-text"
+            rows="20"
+            placeholder="Ingrese el texto aquí..."
+          ></textarea>
+          <p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill="currentColor"
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2a1 1 0 0 0 0-2"
+              />
+            </svg>
+            Solo letras minúsculas y sin acentos
+          </p>
+          <div class="actions">
+            <button id="encrypt-btn">Encriptar</button>
+            <button id="decrypt-btn">Desencriptar</button>
+          </div>
+        </div>
+        <div class="output-box">
+          <textarea
+            id="output-text"
+            rows="20"
+            placeholder="Ingrese el texto aquí..."
+          ></textarea>
+          <button id="copy-btn" onclick="copyContent()">Copiar</button>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy Lenny González 2024</p>
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
