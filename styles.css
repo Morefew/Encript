@@ -136,15 +136,17 @@ body {
   font-family: "Inter", sans-serif;
   background-color: #f7faff;
   color: #1a3d70;
+  background: #f3f5fc;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 90dvh;
 }
 
 header {
@@ -162,64 +164,118 @@ header {
 
 main {
   display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-  text-align: center;
+  gap: 5rem;
+  padding: 20px;
+  width: 90%;
+  height: 100%;
+  align-self: flex-end;
+  flex-wrap: wrap;
 }
 
 .text-box,
 .output-box {
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
-  width: 100%;
-  max-width: 500px;
+  border-radius: 32px;
 }
 
 textarea {
+  color: #0a3871;
   font: inherit;
   border: none;
   font-size: 1.5rem;
   outline: none;
   background: none;
   resize: none;
+  overflow: auto;
+  width: 100%;
 }
 
-.text-box p {
+.text-box {
+  flex-grow: 2;
+  padding: 1rem;
+  gap: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instructions {
+  align-self: flex-start;
+  justify-self: end;
   font-size: 0.7rem;
-  margin-block: 1rem;
-  text-align: left;
 }
 
 .output-box {
+  flex-grow: 1;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.emptyMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+  margin: 10%;
+}
+
+.emptyText {
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  color: #000;
+}
+
+.emptyInstruction {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #000;
 }
 
 .actions {
   display: flex;
-  gap: 20px;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
 }
 
 #encrypt-btn,
 #decrypt-btn,
 #copy-btn {
-  border: none;
   padding: 10px 20px;
-  border-radius: 25px;
   font-size: 16px;
   cursor: pointer;
-  width: 329px;
+  width: 100%;
+  height: 67px;
+  border-radius: 24px;
+  border: none;
 }
 
-#encrypt-btn,
-#copy-btn {
-  background-color: #1a3d70;
+#encrypt-btn {
+  background: #0a3871;
   color: white;
 }
 
-button:hover {
-  background-color: #154265;
+#decrypt-btn,
+#copy-btn {
+  border: 1px solid #0a3871;
+  color: #0a3871;
+  background-color: white;
+}
+
+#decrypt-btn:hover,
+#copy-btn:hover,
+#encrypt-btn:hover {
+  background-color: #0f51a1;
+  color: white;
 }
 
 footer {
@@ -230,34 +286,50 @@ footer {
   width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   main {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 5rem;
+    padding: 20px;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 
   .text-box,
   .output-box {
-    width: 45%;
+    width: 90%;
   }
 
-  .actions {
-    flex-direction: column;
+  #encrypt-btn,
+  #decrypt-btn,
+  #copy-btn {
+    width: 100%;
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 368px) {
   main {
-    justify-content: space-around;
+    display: flex;
+    gap: 1rem;
+    padding: 10px;
+  }
+
+  #encrypt-btn,
+  #decrypt-btn,
+  #copy-btn {
+    width: 100%;
+  }
+  .actions {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    flex-wrap: wrap;
   }
 
   .text-box,
   .output-box {
-    width: 40%;
-  }
-
-  .actions {
-    flex-direction: row;
-    justify-content: center;
+    width: 90%;
   }
 }

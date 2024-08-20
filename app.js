@@ -1,5 +1,5 @@
-function encriptar(cadena = "") {
-  let y = cadena.toLowerCase();
+function encrypt(text = "") {
+  let y = text.toLowerCase();
 
   if (y) {
     if (y.includes("e")) {
@@ -22,8 +22,8 @@ function encriptar(cadena = "") {
   return y;
 }
 
-function desencriptar(cadena = "") {
-  let y = cadena.toLowerCase();
+function decrypt(text = "") {
+  let y = text.toLowerCase();
 
   if (y) {
     if (y.includes("enter")) {
@@ -45,36 +45,92 @@ function desencriptar(cadena = "") {
   return y;
 }
 
-// Agregar eventos a los botones
+function createEmptyMessage() {
+  const outputFrame = document.querySelector(".output-box");
+  const outputFrameBtn = outputFrame.firstElementChild;
+  const emptyMessage = document.createElement("div");
+  const emptyText = document.createElement("p");
+  const emptyInstruction = document.createElement("p");
+  let errorImage;
+
+  emptyMessage.className = "emptyMessage";
+  emptyText.textContent = "Ningún mensaje fue encontrado";
+  emptyText.className = "emptyText";
+  emptyInstruction.textContent =
+    "Ingresa el texto que desees encriptar o desencriptar.";
+  emptyInstruction.className = "emptyInstruction";
+
+  emptyMessage.appendChild(emptyText);
+  emptyMessage.appendChild(emptyInstruction);
+
+  function checkScreenSize() {
+    if (window.innerWidth >= 768) {
+      if (!errorImage) {
+        errorImage = document.createElement("img");
+        errorImage.src = "imgs/Muñeco.png";
+        errorImage.className = "errorImage";
+        emptyMessage.insertBefore(errorImage, emptyText);
+      }
+    } else {
+      if (errorImage) {
+        emptyMessage.removeChild(errorImage);
+        errorImage = null;
+      }
+    }
+  }
+
+  checkScreenSize();
+
+  window.addEventListener("resize", checkScreenSize);
+
+  outputFrame.insertBefore(emptyMessage, outputFrameBtn);
+}
+
+createEmptyMessage();
+
+function handleOutputTextarea(outputText) {
+  const outputFrame = document.querySelector(".output-box");
+  let outputFrameFirstChild = outputFrame.firstElementChild;
+  let textArea;
+
+  if (
+    outputFrameFirstChild &&
+    outputFrameFirstChild.className === "emptyMessage"
+  ) {
+    textArea = document.createElement("textarea");
+    textArea.rows = 20;
+    textArea.className = "output-text";
+    textArea.disabled = true;
+    outputFrame.replaceChild(textArea, outputFrameFirstChild);
+  } else {
+    textArea = outputFrame.querySelector(".output-text");
+  }
+
+  if (textArea) {
+    textArea.value = outputText;
+  }
+}
+
 document.getElementById("encrypt-btn").addEventListener("click", function () {
-  // Obtener el texto del textarea de entrada
   const inputText = document.getElementById("input-text").value;
-
-  // Encriptar el texto
-  const encryptedText = encriptar(inputText);
-
-  // Mostrar el texto encriptado en el textarea de salida
-  document.getElementById("output-text").value = encryptedText;
+  const encryptedText = encrypt(inputText);
+  handleOutputTextarea(encryptedText);
 });
 
 document.getElementById("decrypt-btn").addEventListener("click", function () {
-  // Obtener el texto del textarea de entrada
   const inputText = document.getElementById("input-text").value;
-
-  // Desencriptar el texto
-  const decryptedText = desencriptar(inputText);
-
-  // Mostrar el texto desencriptado en el textarea de salida
-  document.getElementById("output-text").value = decryptedText;
+  const decryptedText = decrypt(inputText);
+  handleOutputTextarea(decryptedText);
 });
 
-let text = document.getElementById("output-text").innerHTML;
-
-const copyContent = async () => {
+document.getElementById("copy-btn").addEventListener("click", function () {
+  const copyContent = document.querySelector(".output-text");
   try {
-    await navigator.clipboard.writeText(text);
-    console.log("Content copied to clipboard");
+    navigator.clipboard.writeText(copyContent.value);
+    copyContent.value = "";
+    copyContent.remove();
+    createEmptyMessage();
   } catch (err) {
     console.error("Failed to copy: ", err);
   }
-};
+});

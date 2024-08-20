@@ -19,13 +19,13 @@
       </header>
 
       <main>
-        <div class="text-box">
+        <form name="text-box" class="text-box">
           <textarea
             id="input-text"
             rows="20"
             placeholder="Ingrese el texto aquí..."
           ></textarea>
-          <p>
+          <p class="instructions">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
@@ -40,17 +40,26 @@
             Solo letras minúsculas y sin acentos
           </p>
           <div class="actions">
-            <button id="encrypt-btn">Encriptar</button>
-            <button id="decrypt-btn">Desencriptar</button>
+            <button
+              id="encrypt-btn"
+              class="usersText"
+              form="text-box"
+              type="button"
+            >
+              Encriptar
+            </button>
+            <button
+              id="decrypt-btn"
+              class="usersText"
+              form="text-box"
+              type="button"
+            >
+              Desencriptar
+            </button>
           </div>
-        </div>
+        </form>
         <div class="output-box">
-          <textarea
-            id="output-text"
-            rows="20"
-            placeholder="Ingrese el texto aquí..."
-          ></textarea>
-          <button id="copy-btn" onclick="copyContent()">Copiar</button>
+          <button id="copy-btn">Copiar</button>
         </div>
       </main>
 
