@@ -14,17 +14,20 @@
   </head>
   <body>
     <div class="container">
+      <!-- Encabezado de la página -->
       <header>
         <div class="logo"></div>
       </header>
-
+      <!-- Contenido principal de la página -->
       <main>
         <form name="text-box" class="text-box">
+          <!-- Área de texto para la entrada del usuario -->
           <textarea
             id="input-text"
             rows="20"
             placeholder="Ingrese el texto aquí..."
           ></textarea>
+          <!-- Instrucciones para el usuario -->
           <p class="instructions">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -39,6 +42,7 @@
             </svg>
             Solo letras minúsculas y sin acentos
           </p>
+          <!-- Botones de acción -->
           <div class="actions">
             <button
               id="encrypt-btn"
@@ -58,11 +62,12 @@
             </button>
           </div>
         </form>
+        <!-- Área de salida para el texto encriptado o desencriptado -->
         <div class="output-box">
           <button id="copy-btn">Copiar</button>
         </div>
       </main>
-
+      <!-- Pie de página -->
       <footer>
         <p>&copy Lenny González 2024</p>
       </footer>
