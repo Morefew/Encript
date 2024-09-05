@@ -1,3 +1,8 @@
+/**
+ * Encripta un texto dado según un conjunto de reglas específicas.
+ * @param {string} text - El texto a encriptar. Por defecto es una cadena vacía.
+ * @returns {string} El texto encriptado.
+ */
 function encrypt(text = "") {
   let y = text.toLowerCase();
 
@@ -22,6 +27,11 @@ function encrypt(text = "") {
   return y;
 }
 
+/**
+ * Desencripta un texto dado según un conjunto de reglas específicas.
+ * @param {string} text - El texto a desencriptar. Por defecto es una cadena vacía.
+ * @returns {string} El texto desencriptado.
+ */
 function decrypt(text = "") {
   let y = text.toLowerCase();
 
@@ -45,6 +55,9 @@ function decrypt(text = "") {
   return y;
 }
 
+/**
+ * Crea un mensaje vacío en la interfaz de usuario cuando no se encuentra ningún mensaje.
+ */
 function createEmptyMessage() {
   const outputFrame = document.querySelector(".output-box");
   const outputFrameBtn = outputFrame.firstElementChild;
@@ -88,6 +101,10 @@ function createEmptyMessage() {
 
 createEmptyMessage();
 
+/**
+ * Maneja la salida del texto encriptado o desencriptado en la interfaz de usuario.
+ * @param {string} outputText - El texto de salida a mostrar en la interfaz de usuario.
+ */
 function handleOutputTextarea(outputText) {
   const outputFrame = document.querySelector(".output-box");
   let outputFrameFirstChild = outputFrame.firstElementChild;
