@@ -55,4 +55,4 @@ Este proyecto es un encriptador de texto simple que permite a los usuarios encri
 
 ## Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
+Este proyecto está licenciado bajo la Licencia MIT.
